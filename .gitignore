@@ -58,3 +58,13 @@ public/images/uploads/
 
 # Other
 coverage/
+
+# Local firebase config (do not commit local project selection)
+.firebaserc
+
+# Local CSV backups and temp CSV files
+public/data/*.bak
+public/data/backups/
+
+# Uploaded images (runtime)
+public/images/uploads/

@@ -19,7 +19,23 @@ const imagesPath = path.join(__dirname, 'public', 'images');
 if (!fs.existsSync(imagesPath)) {
   fs.mkdirSync(imagesPath, { recursive: true });
 }
-app.use('/images', express.static(imagesPath));
+app.use('/images', express.static(imagesPath, {
+  setHeaders: (res /* , path */) => {
+    // Match the Firebase hosting cache policy for images used in production
+    res.set('Cache-Control', 'public, max-age=0, s-maxage=3600, must-revalidate');
+  }
+}));
+
+// Serve data files with a short cache window for quick edits during development
+const dataPath = path.join(__dirname, 'public', 'data');
+if (!fs.existsSync(dataPath)) {
+  fs.mkdirSync(dataPath, { recursive: true });
+}
+app.use('/data', express.static(dataPath, {
+  setHeaders: (res /* , path */) => {
+    res.set('Cache-Control', 'public, max-age=0, s-maxage=60, must-revalidate');
+  }
+}));
 
 // Configure multer for image uploads
 const storage = multer.diskStorage({
