@@ -1,0 +1,39 @@
+setting_key,setting_value,setting_type,description
+store_name,Store Name,text,Store display name
+store_tagline,Premium Store Items,text,Tagline shown in header
+store_email,NA@gmail.com,email,Primary contact email
+store_phone,+91-12345-12345,phone,Contact phone number
+whatsapp_number,+916353569670,phone,WhatsApp for orders
+store_address,India,text,Physical address
+currency_code,INR,text,ISO currency code
+currency_symbol,₹,text,Currency symbol
+tax_rate,1,number,Tax percentage
+enable_tax,false,boolean,Apply tax on checkout
+shipping_enabled,true,boolean,Enable shipping calculation
+primary_color,#000000,color,Main brand color
+secondary_color,#0fc26f,color,Accent color
+logo_path,https://picsum.photos/200/300,path,Store logo
+favicon_path,https://picsum.photos/200/300,path,Browser favicon
+banner_image,/images/string-spool-colorful-buttons-spool-cotton-balls-wooden-plank-1766859146649-832970232.jpg,path,Homepage hero banner
+banner_title,Elevate Your Life with Shopping Experience,text,Banner headline
+banner_subtitle,Discover the latest in Shop,text,Banner subtext
+banner_cta_text,Shop Latest items,text,Banner button text
+banner_cta_link,/products,path,Banner button link
+enable_search,true,boolean,Show search bar
+enable_filters,true,boolean,Show product filters
+enable_wishlist,true,boolean,Enable wishlist feature
+products_per_page,12,number,Products shown per page
+order_notification_method,whatsapp,text,Notification method (whatsapp or email)
+facebook_url,,url,Facebook page
+instagram_url,https://instagram.com/insta-url,url,Instagram profile
+twitter_url,,url,Twitter profile
+about_us,Welcome to our Shop haven,longtext,About page content
+return_policy,We offer a 30-day hassle-free return policy. Contact for more.,longtext,Return policy text
+privacy_policy,Your privacy is our priority. We use industry-standard encryption to protect your personal data. We never sell or share your information with third parties without your consent. All payment information is processed securely through certified payment gateways.,longtext,Privacy policy
+terms_conditions,"By purchasing from Store, you agree to our terms of service. All products come with manufacturer warranties. Prices and availability are subject to change. We reserve the right to cancel orders due to pricing errors or stock availability.",longtext,Terms and conditions
+footer_text,© 2025 Shop Store All rights reserved.,text,Footer copyright
+enable_newsletter,false,boolean,Show newsletter signup
+newsletter_text,Get 10% off your first order!,text,Newsletter CTA
+google_analytics_id,G-XXXXXXXXXX,text,GA tracking ID
+store_name_font,Bebas Neue,select,"Store name font style
+""store_name_font_size,32,number,Store name font size in pixels"

@@ -1,0 +1,2 @@
+shipping_id,shipping_name,shipping_type,min_order_value,max_order_value,shipping_cost,estimated_days_min,estimated_days_max,is_active,regions,description,base_price
+SHIP005,General Shipping,overnight,0,999999,39.99,1,1,true,US,General Shipping,10

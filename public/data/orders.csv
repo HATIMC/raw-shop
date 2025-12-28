@@ -1,0 +1,1 @@
+user_id,order_id,order_date,customer_first_name,customer_last_name,customer_email,customer_phone,shipping_address,items_json,subtotal,tax,shipping,discount,total,shipping_method,payment_method,order_notes,status,admin_status,admin_comment,discount_code

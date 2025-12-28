@@ -1,0 +1,9 @@
+tax_id,region,tax_rate,description,is_active
+TAX001,California,7.25%,California state sales tax,true
+TAX002,New York,8.52%,New York state and local sales tax,true
+TAX003,Texas,6.25%,Texas state sales tax,true
+TAX004,Florida,6.00%,Florida state sales tax,true
+TAX005,Washington,10.40%,Washington state and local sales tax (Seattle area),true
+TAX006,Nevada,8.38%,Nevada state and local sales tax (Las Vegas area),true
+TAX007,International,0%,No tax for international orders (customs fees may apply),true
+TAX008,Oregon,0%,Oregon has no sales tax,true
