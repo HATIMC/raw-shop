@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { readCSV } from '../services/csvService';
+import { readCSV, getRuntimeConfig } from '../services/csvService';
 
 interface OrderItem {
   product: {
@@ -230,6 +230,25 @@ export default function OrdersManager() {
     return `₹${amount.toFixed(2)}`;
   };
 
+  // Resolve thumbnail paths so that relative /images/... references point to the API when Admin runs locally
+  const resolveImageUrl = (thumb?: string) => {
+    if (!thumb) return '';
+    let v = String(thumb).trim();
+
+    // Keep data URLs and absolute URLs as-is
+    if (!v) return '';
+    if (/^data:/i.test(v)) return v;
+    if (/^https?:\/\//i.test(v)) return v;
+
+    // Normalize paths like 'images/foo.png' -> '/images/foo.png'
+    if (/^images\//i.test(v)) v = '/' + v;
+
+    const api = getRuntimeConfig().API_URL || 'http://localhost:5174';
+    const base = api.replace(/\/$/, '');
+    if (v.startsWith('/')) return `${base}${v}`;
+    return `${base}/${v}`;
+  };
+
   if (loading) {
     return (
       <div className="p-6">
@@ -417,9 +436,12 @@ export default function OrdersManager() {
                   {selectedOrder.items.map((item, index) => (
                     <div key={index} className="flex gap-3 p-3 bg-gray-50 rounded">
                       <img
-                        src={item.product.thumbnail}
+                        src={resolveImageUrl(item.product.thumbnail) || 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext fill=%22999%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E'}
                         alt={item.product.productName}
                         className="w-16 h-16 object-cover rounded"
+                        onError={(e) => {
+                          e.currentTarget.src = 'data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Crect fill=%22%23ddd%22 width=%22100%22 height=%22100%22/%3E%3Ctext fill=%22999%22 x=%2250%25%22 y=%2250%25%22 dominant-baseline=%22middle%22 text-anchor=%22middle%22%3ENo Image%3C/text%3E%3C/svg%3E';
+                        }}
                       />
                       <div className="flex-1">
                         <div className="font-medium">{item.product.productName}</div>
